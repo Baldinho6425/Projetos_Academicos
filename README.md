@@ -8,7 +8,7 @@ Bem-vindo(a) ao meu repositório de **projetos acadêmicos**! 🚀📘 Aqui est�
 - **📊 Análises e estudos:** Relatórios, códigos e experimentos que documentam meu aprendizado.  
 
 ## 📚 Tecnologias e ferramentas utilizadas:  
-- **Linguagens:** Java, Python, C, entre outras.  
+- **Linguagens:** Java, Python, entre outras.  
 - **Ferramentas:** Git, bancos de dados, frameworks diversos.  
 - **Conceitos:** Algoritmos, estruturas de dados, desenvolvimento web, entre outros.  
 
