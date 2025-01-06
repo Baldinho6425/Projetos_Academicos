@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TURI++</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-a7bft6TlyFVFOWvO8fRQkPzU5ibmx+nJf6xNUthL+fIK5pyudLK+lQszPfY1vOjWgIV7fuTzUeZfrC4KThz8ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="header">
+        <h1>TURI++</h1>
+        <input type="text" placeholder="Pesquisar">
+        <div class="icons">
+            <button onclick="location.href='#'"><img src="../Icons/botao-de-inicio.png" alt="Home"></button>
+            <button onclick="location.href='#'"><img src="{{ url_for('static', filename='jun-20-24-STsC1-01HY.ACJtJMP73R-2K.png') }}" alt="Mensagens"></button>
+            <button onclick="location.href='#'"><img src="{{ url_for('static', filename='LOGO_Fisioterapia-257x300.jpg') }}" alt="Notificações"></button>
+            <button onclick="location.href='#'"><img src="https://image.flaticon.com/icons/png/512/3135/3135715.png" alt="Perfil"></button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="feed">
+            {% for post in posts %}
+            <div class="post">
+                <img src="{{ post['path'] }}" alt="Post Image">
+                <div class="caption">
+                    <p><strong>USER</strong> Nova postagem no TURI++.</p>
+                </div>
+                <div class="comments">
+                    <h3>Comentários</h3>
+                    {% for comment in post['comments'] %}
+                    <p>{{ comment }}</p>
+                    {% endfor %}
+                    <form action="/comment" method="post">
+                        <input type="hidden" name="post_path" value="{{ post['path'] }}">
+                        <input type="text" name="comment" placeholder="Adicionar um comentário" required>
+                        <button type="submit">Comentar</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="footer">
+        <button onclick="location.href='#'"><img src="{{ url_for('static', filename='botao-de-inicio.png') }}" alt="Home"></button>
+        <button onclick="location.href='#'"><img src="{{ url_for('static', filename='jun-20-24-STsC1-01HY.ACJtJMP73R-2K.png') }}" alt="Pesquisar"></button>
+        <button onclick="document.getElementById('uploadModal').style.display='block'"><img src="https://image.flaticon.com/icons/png/512/1828/1828961.png" alt="Publicar"></button>
+        <button onclick="location.href='#'"><img src="{{ url_for('static', filename='LOGO_Fisioterapia-257x300.jpg') }}" alt="Perfil"></button>
+    </div>
+
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('uploadModal').style.display='none'">&times;</span>
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" required>
+                <input type="submit" value="Publicar">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
